@@ -1,9 +1,14 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const ruBtn = document.getElementsByClassName('header__ru'),
     const engBtn = document.getElementsByClassName('header__eng');
-    const isRuClicked = true
+    const isEngClicked = false
 
-    ruBtn[0].addEventListener('click', (elem) => {
-        console.log(ruBtn)
+    engBtn[0].addEventListener('click', (elem) => {
+        if (isEngClicked) {
+            console.log('pressen ru');
+        } else {
+            window.location.href = 'eng.html';
+            isRuClicked = true;
+            isEngClicked = false;
+        }
     })
 })
