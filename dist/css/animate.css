@@ -1,15 +1,11 @@
 @charset "UTF-8";
 :root {
-  --animate-duration: 10s;
+  --animate-duration: 2s;
   --animate-delay: 1s;
   --animate-repeat: 1;
 }
 .animate__animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 10s;
-  -webkit-animation-duration: var(--animate-duration);
-  animation-duration: 10s;
-  -webkit-animation-fill-mode: both;
+  animation-duration: 2s;
   animation-fill-mode: both;
 }
 .animate__animated.animate__infinite {
