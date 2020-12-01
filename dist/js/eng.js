@@ -1,18 +1,16 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const engBtn = document.getElementsByClassName('header__eng');
-    const isEngClicked = false
+    const ruBtn = document.getElementsByClassName('header__ru_eng');
+    const isRuClicked = false
 
-    engBtn[0].addEventListener('click', (elem) => {
-        if (isEngClicked) {
-            console.log('pressen ru');
+    ruBtn[0].addEventListener('click', (elem) => {
+        if (isRuClicked) {
+            console.log('pressen ru')
         } else {
-            window.location.href = 'eng.html';
+            window.location.href = 'index.html';
             isRuClicked = true;
             isEngClicked = false;
         }
     })
-
-    //slider
 
     const sliderArrowLeft = document.querySelector(".slider__arrow_left"),
           sliderArrowRight = document.querySelector(".slider__arrow_right"),
@@ -21,13 +19,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let count = 1;
 
+    console.log(sliderDots);
+
     sliderArrowLeft.addEventListener('click', previousSlide);
-    sliderArrowRight.addEventListener('click', nextSlide)
+    sliderArrowRight.addEventListener('click', nextSlide);
     sliderDots.forEach((e, i) => {
         e.addEventListener('click', () => {
             showSlides(count = i+1);
         })
-    })
+    });
 
     function nextSlide() {
         showSlides(count += 1);
@@ -71,7 +71,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     showSlides(count);
 
-    //validate form
 
     const formBtn = document.querySelector(".form__submit"),
           form = document.querySelector(".form");
@@ -79,21 +78,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Форма отправлена!!!");
+        alert("Form sent!!!");
         inputs.forEach(elem => {
             elem.value = '';
         });
     });
-
-    //smoth
 
     $("a[href^='#']").click(function(){
         let _href = $(this).attr('href');
         $('html, body').animate({scrollTop: $(_href).offset().top+'px'});
         return false;
     })
-
-    //visual help
 
     const questG = document.querySelector('.visual__table-questiong'),
           questA = document.querySelector('.visual__table-questiona'),
@@ -144,41 +139,5 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     questD.addEventListener('mouseout', () => {
         txtD.style.display = 'none';
-    })
-
-    //comments
-
-    const commentsItem = document.querySelectorAll('.comments__item');
-
-    let isCommentFull = false;
-
-    commentsItem.forEach(e => {
-        e.addEventListener('click',() => {
-            if (isCommentFull){
-                for (let block of commentsItem){
-                    block.style.display = "block";
-                    block.style.width = "555px";
-                }
-                let commentsBlock = e.childNodes[0];
-                commentsBlock.style.padding = "0px"
-                commentsBlock.childNodes[0].style.display = "block";
-                commentsBlock.childNodes[1].style.display = "block";
-                commentsBlock.childNodes[2].style.display = 'none';
-                isCommentFull = false;
-            } else {
-                for (let block of commentsItem){
-                    block.style.display = "none";
-                }
-                e.style.width = "100%";
-                e.style.display = "flex";
-                let commentsBlock = e.childNodes[0];
-                commentsBlock.style.padding = "15px"
-                commentsBlock.childNodes[0].style.display = "none";
-                commentsBlock.childNodes[1].style.display = "none";
-                commentsBlock.childNodes[2].style.display = 'inline';
-                isCommentFull = true;
-            }
-            document.documentElement.scrollTop = 8732.7998046875;
-        })
     })
 })
