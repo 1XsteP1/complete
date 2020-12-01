@@ -140,4 +140,38 @@ window.addEventListener('DOMContentLoaded', () => {
     questD.addEventListener('mouseout', () => {
         txtD.style.display = 'none';
     })
+    
+    const commentsItem = document.querySelectorAll('.comments__item');
+
+    let isCommentFull = false;
+
+    commentsItem.forEach(e => {
+        e.addEventListener('click',() => {
+            if (isCommentFull){
+                for (let block of commentsItem){
+                    block.style.display = "block";
+                    block.style.width = "555px";
+                }
+                let commentsBlock = e.childNodes[0];
+                commentsBlock.style.padding = "0px"
+                commentsBlock.childNodes[0].style.display = "block";
+                commentsBlock.childNodes[1].style.display = "block";
+                commentsBlock.childNodes[2].style.display = 'none';
+                isCommentFull = false;
+            } else {
+                for (let block of commentsItem){
+                    block.style.display = "none";
+                }
+                e.style.width = "100%";
+                e.style.display = "flex";
+                let commentsBlock = e.childNodes[0];
+                commentsBlock.style.padding = "15px"
+                commentsBlock.childNodes[0].style.display = "none";
+                commentsBlock.childNodes[1].style.display = "none";
+                commentsBlock.childNodes[2].style.display = 'inline';
+                isCommentFull = true;
+            }
+            document.documentElement.scrollTop = 8632;
+        })
+    })
 })
