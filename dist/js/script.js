@@ -23,6 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     sliderArrowLeft.addEventListener('click', previousSlide);
     sliderArrowRight.addEventListener('click', nextSlide)
+    sliderDots.forEach((e, i) => {
+        e.addEventListener('click', () => {
+            showSlides(count = i+1);
+        })
+    })
 
     function nextSlide() {
         showSlides(count += 1);
@@ -79,4 +84,101 @@ window.addEventListener('DOMContentLoaded', () => {
             elem.value = '';
         });
     });
+
+    //smoth
+
+    $("a[href^='#']").click(function(){
+        let _href = $(this).attr('href');
+        $('html, body').animate({scrollTop: $(_href).offset().top+'px'});
+        return false;
+    })
+
+    //visual help
+
+    const questG = document.querySelector('.visual__table-questiong'),
+          questA = document.querySelector('.visual__table-questiona'),
+          questS = document.querySelector('.visual__table-questions'),
+          questM = document.querySelector('.visual__table-questionm'),
+          questB = document.querySelector('.visual__table-questionb'),
+          questD = document.querySelector('.visual__table-questiond');
+    
+    const txtA = document.querySelector('.visual__table-txta'),
+          txtG = document.querySelector('.visual__table-txtg'),
+          txtS = document.querySelector('.visual__table-txts'),
+          txtM = document.querySelector('.visual__table-txtm'),
+          txtB = document.querySelector('.visual__table-txtb'),
+          txtD = document.querySelector('.visual__table-txtd');
+
+    questA.addEventListener('mouseover', () => {
+        txtA.style.display = 'block';
+    })
+    questA.addEventListener('mouseout', () => {
+        txtA.style.display = 'none';
+    })
+    questG.addEventListener('mouseover', () => {
+        txtG.style.display = 'block';
+    })
+    questG.addEventListener('mouseout', () => {
+        txtG.style.display = 'none';
+    })
+    questS.addEventListener('mouseover', () => {
+        txtS.style.display = 'block';
+    })
+    questS.addEventListener('mouseout', () => {
+        txtS.style.display = 'none';
+    })
+    questM.addEventListener('mouseover', () => {
+        txtM.style.display = 'block';
+    })
+    questM.addEventListener('mouseout', () => {
+        txtM.style.display = 'none';
+    })
+    questB.addEventListener('mouseover', () => {
+        txtB.style.display = 'block';
+    })
+    questB.addEventListener('mouseout', () => {
+        txtB.style.display = 'none';
+    })
+    questD.addEventListener('mouseover', () => {
+        txtD.style.display = 'block';
+    })
+    questD.addEventListener('mouseout', () => {
+        txtD.style.display = 'none';
+    })
+
+    //comments
+
+    const commentsItem = document.querySelectorAll('.comments__item');
+
+    let isCommentFull = false;
+
+    commentsItem.forEach(e => {
+        e.addEventListener('click',() => {
+            if (isCommentFull){
+                for (let block of commentsItem){
+                    block.style.display = "block";
+                    block.style.width = "555px";
+                }
+                let commentsBlock = e.childNodes[0];
+                commentsBlock.style.padding = "0px"
+                commentsBlock.childNodes[0].style.display = "block";
+                commentsBlock.childNodes[1].style.display = "block";
+                commentsBlock.childNodes[2].style.display = 'none';
+                isCommentFull = false;
+            } else {
+                for (let block of commentsItem){
+                    block.style.display = "none";
+                }
+                e.style.width = "100%";
+                e.style.display = "flex";
+                let commentsBlock = e.childNodes[0];
+                commentsBlock.style.padding = "15px"
+                commentsBlock.childNodes[0].style.display = "none";
+                commentsBlock.childNodes[1].style.display = "none";
+                commentsBlock.childNodes[2].style.display = 'inline';
+                isCommentFull = true;
+            }
+            document.documentElement.scrollTop = 8732.7998046875;
+        })
+    })
 })
